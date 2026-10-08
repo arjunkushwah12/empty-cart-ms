@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>com.emptycart</groupId>
+		<artifactId>empty-cart-ms</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>platform-commons</artifactId>
+	<name>platform-commons</name>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
+		</dependency>
+	</dependencies>
+</project>
+
+<!--<?xml version="1.0" encoding="UTF-8"?>-->
+<!--<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"-->
+<!--		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">-->
+<!--	<modelVersion>4.0.0</modelVersion>-->
+
+<!--	<parent>-->
+<!--		<groupId>org.springframework.boot</groupId>-->
+<!--		<artifactId>spring-boot-starter-parent</artifactId>-->
+<!--		<version>4.1.1</version>-->
+<!--		<relativePath/>-->
+<!--	</parent>-->
+
+<!--	<groupId>com.emptycart</groupId>-->
+<!--	<artifactId>empty-cart-ms</artifactId>-->
+<!--	<version>0.0.1-SNAPSHOT</version>-->
+<!--	<packaging>pom</packaging>-->
+<!--	<name>empty-cart-ms</name>-->
+
+<!--	<modules>-->
+<!--		<module>common</module>-->
+<!--		<module>registry-service</module>-->
+<!--	</modules>-->
+
+<!--	<properties>-->
+<!--		<java.version>21</java.version>-->
+<!--	</properties>-->
+<!--</project>-->
+
+
+
+<!--		&lt;!&ndash;<?xml version="1.0" encoding="UTF-8"?>&ndash;&gt;-->
+<!--&lt;!&ndash;<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&ndash;&gt;-->
+<!--&lt;!&ndash;	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">&ndash;&gt;-->
+<!--&lt;!&ndash;	<modelVersion>4.0.0</modelVersion>&ndash;&gt;-->
+<!--&lt;!&ndash;	<parent>&ndash;&gt;-->
+<!--&lt;!&ndash;		<groupId>org.springframework.boot</groupId>&ndash;&gt;-->
+<!--&lt;!&ndash;		<artifactId>spring-boot-starter-parent</artifactId>&ndash;&gt;-->
+<!--&lt;!&ndash;		<version>4.1.1</version>&ndash;&gt;-->
+<!--&lt;!&ndash;		<relativePath/> &lt;!&ndash; lookup parent from repository &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;	</parent>&ndash;&gt;-->
+<!--&lt;!&ndash;	<groupId>com.emptycart</groupId>&ndash;&gt;-->
+<!--&lt;!&ndash;	<artifactId>platform-commons</artifactId>&ndash;&gt;-->
+<!--&lt;!&ndash;	<version>0.0.1-SNAPSHOT</version>&ndash;&gt;-->
+<!--&lt;!&ndash;	<name/>&ndash;&gt;-->
+<!--&lt;!&ndash;	<description/>&ndash;&gt;-->
+<!--&lt;!&ndash;	<url/>&ndash;&gt;-->
+<!--&lt;!&ndash;	<licenses>&ndash;&gt;-->
+<!--&lt;!&ndash;		<license/>&ndash;&gt;-->
+<!--&lt;!&ndash;	</licenses>&ndash;&gt;-->
+<!--&lt;!&ndash;	<developers>&ndash;&gt;-->
+<!--&lt;!&ndash;		<developer/>&ndash;&gt;-->
+<!--&lt;!&ndash;	</developers>&ndash;&gt;-->
+<!--&lt;!&ndash;	<scm>&ndash;&gt;-->
+<!--&lt;!&ndash;		<connection/>&ndash;&gt;-->
+<!--&lt;!&ndash;		<developerConnection/>&ndash;&gt;-->
+<!--&lt;!&ndash;		<tag/>&ndash;&gt;-->
+<!--&lt;!&ndash;		<url/>&ndash;&gt;-->
+<!--&lt;!&ndash;	</scm>&ndash;&gt;-->
+<!--&lt;!&ndash;	<properties>&ndash;&gt;-->
+<!--&lt;!&ndash;		<java.version>21</java.version>&ndash;&gt;-->
+<!--&lt;!&ndash;	</properties>&ndash;&gt;-->
+<!--&lt;!&ndash;	<dependencies>&ndash;&gt;-->
+<!--&lt;!&ndash;		<dependency>&ndash;&gt;-->
+<!--&lt;!&ndash;			<groupId>org.springframework.boot</groupId>&ndash;&gt;-->
+<!--&lt;!&ndash;			<artifactId>spring-boot-starter</artifactId>&ndash;&gt;-->
+<!--&lt;!&ndash;		</dependency>&ndash;&gt;-->
+
+<!--&lt;!&ndash;		<dependency>&ndash;&gt;-->
+<!--&lt;!&ndash;			<groupId>org.springframework.boot</groupId>&ndash;&gt;-->
+<!--&lt;!&ndash;			<artifactId>spring-boot-starter-test</artifactId>&ndash;&gt;-->
+<!--&lt;!&ndash;			<scope>test</scope>&ndash;&gt;-->
+<!--&lt;!&ndash;		</dependency>&ndash;&gt;-->
+<!--&lt;!&ndash;	</dependencies>&ndash;&gt;-->
+
+<!--&lt;!&ndash;	<build>&ndash;&gt;-->
+<!--&lt;!&ndash;		<plugins>&ndash;&gt;-->
+<!--&lt;!&ndash;			<plugin>&ndash;&gt;-->
+<!--&lt;!&ndash;				<groupId>org.springframework.boot</groupId>&ndash;&gt;-->
+<!--&lt;!&ndash;				<artifactId>spring-boot-maven-plugin</artifactId>&ndash;&gt;-->
+<!--&lt;!&ndash;			</plugin>&ndash;&gt;-->
+<!--&lt;!&ndash;		</plugins>&ndash;&gt;-->
+<!--&lt;!&ndash;	</build>&ndash;&gt;-->
+
+<!--&lt;!&ndash;</project>&ndash;&gt;-->
