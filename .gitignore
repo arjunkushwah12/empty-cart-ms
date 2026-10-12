@@ -12,6 +12,7 @@ HELP.md
 .settings/
 .factorypath
 .sts4-cache/
+*.pem
 
 
 #HELP.md
