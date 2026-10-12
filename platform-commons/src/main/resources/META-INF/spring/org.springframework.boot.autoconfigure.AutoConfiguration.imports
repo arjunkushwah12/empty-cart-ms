@@ -1,2 +1,3 @@
 com.emptycart.platform.commons.discovery.RegistryClientAutoConfiguration
 com.emptycart.platform.commons.loadbalancer.LoadBalancerAutoConfiguration
+com.emptycart.platform.commons.exception.ExceptionHandlingAutoConfiguration

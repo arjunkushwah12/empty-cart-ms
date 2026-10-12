@@ -19,6 +19,7 @@
 	<modules>
 		<module>platform-commons</module>
 		<module>service-registry</module>
+		<module>user-service</module>
 	</modules>
 
 	<properties>
