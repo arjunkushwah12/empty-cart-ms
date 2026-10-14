@@ -19,7 +19,7 @@ public class User {
     @Column(nullable = false)
     private Role role;
     @Column(nullable = false)
-    private boolean active;
+    private boolean active = true;
     @Column(length = 500)
     private String profilePictureUrl;
 
@@ -28,7 +28,7 @@ public class User {
 
     protected User() {}
 
-    public User(String name, String email, String passwordHash, Role role, boolean active, String profilePictureUrl) {
+    public User(String name, String email, String passwordHash, Role role) {
         this.name = name;
         this.email = email;
         this.passwordHash = passwordHash;
