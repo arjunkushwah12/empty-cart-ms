@@ -9,7 +9,7 @@ import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
 import java.util.Base64;
 
-final class PemKeyLoader {
+public final class PemKeyLoader {
 
     private PemKeyLoader() {}
 
@@ -18,7 +18,7 @@ final class PemKeyLoader {
         return KeyFactory.getInstance("RSA").generatePrivate(new PKCS8EncodedKeySpec(der));
     }
 
-    static PublicKey loadPublic(String path) throws Exception {
+    public static PublicKey loadPublic(String path) throws Exception {
         byte[] der = decode(path, "PUBLIC KEY");
         return KeyFactory.getInstance("RSA").generatePublic(new X509EncodedKeySpec(der));
     }
