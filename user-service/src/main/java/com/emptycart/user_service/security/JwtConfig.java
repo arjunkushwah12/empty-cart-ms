@@ -7,8 +7,7 @@ import com.nimbusds.jose.jwk.source.ImmutableJWKSet;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.oauth2.jwt.JwtEncoder;
-import org.springframework.security.oauth2.jwt.NimbusJwtEncoder;
+import org.springframework.security.oauth2.jwt.*;
 
 import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
@@ -24,5 +23,14 @@ public class JwtConfig {
         RSAPublicKey pub = (RSAPublicKey) PemKeyLoader.loadPublic(publicPath);
         RSAKey jwk = new RSAKey.Builder(pub).privateKey(priv).keyID(keyId).build();
         return new NimbusJwtEncoder(new ImmutableJWKSet<>(new JWKSet(jwk)));
+    }
+
+    @Bean
+    public JwtDecoder jwtDecoder(@Value("${jwt.public-key-path}") String publicPath,
+                                 @Value("${jwt.issuer}") String issuer) throws Exception {
+        RSAPublicKey pub = (RSAPublicKey) PemKeyLoader.loadPublic(publicPath);
+        NimbusJwtDecoder decoder = NimbusJwtDecoder.withPublicKey(pub).build();
+        decoder.setJwtValidator(JwtValidators.createDefaultWithIssuer(issuer));
+        return decoder;
     }
 }
