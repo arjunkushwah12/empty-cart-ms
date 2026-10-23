@@ -20,6 +20,7 @@
 		<module>platform-commons</module>
 		<module>service-registry</module>
 		<module>user-service</module>
+		<module>api-gateway</module>
 	</modules>
 
 	<properties>
