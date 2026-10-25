@@ -1,12 +1,10 @@
 package com.emptycart.user_service.service;
 
 import com.emptycart.platform.commons.exception.UnauthorizedException;
+import com.emptycart.user_service.domain.RefreshToken;
 import com.emptycart.user_service.domain.Role;
 import com.emptycart.user_service.domain.User;
-import com.emptycart.user_service.dto.LoginRequest;
-import com.emptycart.user_service.dto.RegisterUserRequest;
-import com.emptycart.user_service.dto.TokenResponse;
-import com.emptycart.user_service.dto.UserResponse;
+import com.emptycart.user_service.dto.*;
 import com.emptycart.user_service.exception.EmailAlreadyExistsException;
 import com.emptycart.user_service.repository.UserRepository;
 import com.emptycart.user_service.security.JwtService;
@@ -19,12 +17,14 @@ public class AuthService {
 
     private final UserRepository users;
     private final PasswordEncoder encoder;
-    private final JwtService jwtService;
+    private final JwtService jwt;
+    private final RefreshTokenService refreshTokens;
 
-    public AuthService(UserRepository users, PasswordEncoder encoder, JwtService jwtService) {
+    public AuthService(UserRepository users, PasswordEncoder encoder, JwtService jwt,RefreshTokenService refreshTokens) {
         this.users = users;
         this.encoder = encoder;
-        this.jwtService = jwtService;
+        this.jwt = jwt;
+        this.refreshTokens = refreshTokens;
     }
 
     @Transactional
@@ -47,8 +47,22 @@ public class AuthService {
             throw new UnauthorizedException("Invalid email or password");
         }
 
-        String token = jwtService.generateAccessToken(user.getId(),user.getRole());
-        return new TokenResponse(token, "Bearer", jwtService.accessTokenSeconds());
+        String token = jwt.generateAccessToken(user.getId(),user.getRole());
+        String refresh = refreshTokens.issue(user.getId(),refreshTokens.newFamily());
+        return new TokenResponse(token, "Bearer", jwt.accessTokenSeconds(),refresh);
     }
 
+    public TokenResponse refresh(RefreshRequest req) {
+        RefreshToken old = refreshTokens.consume(req.refreshToken());
+        User user = users.findById(old.getUserId())
+                .filter(User::isActive)
+                .orElseThrow(() -> new UnauthorizedException("Invalid refresh token"));
+        String access = jwt.generateAccessToken(user.getId(), user.getRole());
+        String refresh = refreshTokens.issue(user.getId(), old.getFamilyId());
+        return new TokenResponse(access, "Bearer", jwt.accessTokenSeconds(), refresh);
+    }
+
+    public void logout(RefreshRequest req) {
+        refreshTokens.revoke(req.refreshToken());
+    }
 }
