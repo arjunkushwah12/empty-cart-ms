@@ -1,10 +1,7 @@
 package com.emptycart.user_service.controller;
 
 import com.emptycart.platform.commons.model.ApiResponse;
-import com.emptycart.user_service.dto.LoginRequest;
-import com.emptycart.user_service.dto.RegisterUserRequest;
-import com.emptycart.user_service.dto.TokenResponse;
-import com.emptycart.user_service.dto.UserResponse;
+import com.emptycart.user_service.dto.*;
 import com.emptycart.user_service.service.AuthService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
@@ -37,4 +34,14 @@ public class AuthController {
         return ApiResponse.ok(service.login(req));
     }
 
+    @PostMapping("/refresh")
+    public ApiResponse<TokenResponse> refresh(@Valid @RequestBody RefreshRequest req){
+        return ApiResponse.ok(service.refresh(req));
+    }
+
+    @PostMapping("/logout")
+    public ResponseEntity<Void> logout(@Valid @RequestBody RefreshRequest req){
+        service.logout(req);
+        return ResponseEntity.noContent().build();
+    }
 }
