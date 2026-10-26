@@ -44,6 +44,7 @@ public class SecurityConfig {
                         .requestMatchers("/api/v1/users/me").authenticated()
                         .requestMatchers("/api/v1/users","/api/v1/users/**").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.PATCH, "/api/v1/vendors/*/status").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.GET, "/api/v1/vendors").hasRole("ADMIN")
                         .anyRequest().authenticated())
                 .oauth2ResourceServer(oauth -> oauth
                         .jwt(jwt->jwt.jwtAuthenticationConverter(converter))
