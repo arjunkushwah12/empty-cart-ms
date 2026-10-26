@@ -1,6 +1,7 @@
 package com.emptycart.user_service.controller;
 
 import com.emptycart.platform.commons.model.ApiResponse;
+import com.emptycart.platform.commons.model.PageResponse;
 import com.emptycart.user_service.dto.VendorApplyRequest;
 import com.emptycart.user_service.dto.VendorResponse;
 import com.emptycart.user_service.dto.VendorStatusRequest;
@@ -38,5 +39,18 @@ public class VendorController {
     @PatchMapping("/{id}/status")
     public ApiResponse<VendorResponse> setStatus(@PathVariable Long id, @Valid @RequestBody VendorStatusRequest req) {
         return ApiResponse.ok(service.setStatus(id,req.active()));
+    }
+
+    @GetMapping
+    public ApiResponse<PageResponse<VendorResponse>> list(
+            @RequestParam(required = false) Boolean active,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "20")int size){
+        return ApiResponse.ok(service.list(active,page,size));
+    }
+
+    @GetMapping("/me")
+    public ApiResponse<VendorResponse> mine(@AuthenticationPrincipal Jwt jwt){
+        return ApiResponse.ok(service.getMine(Long.valueOf(jwt.getSubject())));
     }
 }
