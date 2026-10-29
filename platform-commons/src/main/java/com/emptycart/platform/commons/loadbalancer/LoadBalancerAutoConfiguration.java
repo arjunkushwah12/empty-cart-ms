@@ -1,4 +1,5 @@
 package com.emptycart.platform.commons.loadbalancer;
+import com.emptycart.platform.commons.logging.CorrelationIdClientInterceptor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -17,6 +18,7 @@ public class LoadBalancerAutoConfiguration {
     @Bean
     public RestClient loadBalancedRestClient(LoadBalancer lb) {
         return RestClient.builder()
+                .requestInterceptor(new CorrelationIdClientInterceptor())
                 .requestInterceptor(new LoadBalancerInterceptor(lb))
                 .build();
     }
